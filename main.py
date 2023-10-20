@@ -61,7 +61,7 @@ def dfs(prev, where_prev_looks, A, B):
         next_cell.y = next_cell.y - 1
     elif where_looks == 'u':
         next_cell.x = next_cell.x
-        next_cell.y = next_cell.y+ 1
+        next_cell.y = next_cell.y + 1
     elif where_looks == 'r':
         next_cell.x = next_cell.x + 1
         next_cell.y = next_cell.y
@@ -164,30 +164,30 @@ def main():
 
     dfs(start2, where_looks, A, B)
 
+    if start1 not in visited:
+        # дважды разворачиваемся, шагаем и запускаем dfs из start1
 
-    # дважды разворачиваемся, шагаем и запускаем dfs из start1
+        print(2, 1, flush=True)
+        result = int(input())
+        t += B
+        print(2, 1, flush=True)
+        result = int(input())
+        t += B
+        print(1, flush=True)
+        result = int(input())
+        t += A
 
-    print(2, 1, flush=True)
-    result = int(input())
-    t += B
-    print(2, 1, flush=True)
-    result = int(input())
-    t += B
-    print(1, flush=True)
-    result = int(input())
-    t += A
+        if where_looks == 'd':
+            where_looks = 'u'
+        elif where_looks == 'u':
+            where_looks = 'd'
+        elif where_looks == 'l':
+            where_looks = 'r'
+        elif where_looks == 'r':
+            where_looks = 'l'
 
-    if where_looks == 'd':
-        where_looks = 'u'
-    elif where_looks == 'u':
-        where_looks = 'd'
-    elif where_looks == 'l':
-        where_looks = 'r'
-    elif where_looks == 'r':
-        where_looks = 'l'
-    dfs(start2, where_looks, A, B)
-
-    visited.add(start1)
+        visited.add(start1)
+        dfs(start1, where_looks, A, B)
     print(4, t)
 
 
